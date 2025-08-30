@@ -1,0 +1,28 @@
+请求地址 http://api.yujn.cn/api/xjj.php
+请求示例 http://api.yujn.cn/api/xjj.php?type=json
+请求方式   GET
+返回格式  json
+返回结果 一个json文本
+[
+{
+“代码”:
+200,
+“video_count”:
+7850,
+“数据”:
+“https://txmov2.a.kwimgs.com/upic/2022/09/14/23/BMjAyMjA5MTQyMzUwNDlfNjE1ODE0MDk2Xzg0MjMwNzA1MzAwXzFfMw==_b_B72e8f6a8eab39776004858e2890b74bb.mp4?clientCacheKey=3x78gy52t2zm4ks_b.mp4&tt=b&di=b72e16c7&bp=13414\n”,
+“小贴士”:
+“遇见API|www.yujn.cn”
+}
+]
+按照这个 Api 接口，用python写抖音样式的 App，可上下滑动或鼠标滚轮滑动切换视频，
+优化切换视频网络加载速度太慢启动时先加载已个视频播放，同时后台缓存 5 个视频，
+每播放掉一个 视频就缓存一个，始终有 5 个视频未播放
+注：会有多次重定向才会获得最终的视频地址
+视频播放逻辑为，
+第一步，启动APP
+第二步 Get API获取json读取视频链接
+第三步，将视频缓存，
+第 4 步 播放缓存的视频，
+第5步，Get API获取视频链接将视频缓存到本地在后台重复 5 次不影响当前视频播放，
+保证本地未播放缓存视频有 5 个播放过的视频在播放第 50 个的时候按队列清除本地缓存视频总数为 55 个不包括 5 个 未播放
